@@ -8,8 +8,27 @@
 
 #include <stdio.h>
 
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
+    int array[] = {1,2,3,44,23,9,4,2,3};
+    int length = sizeof(array)/sizeof(int);
+    for (int i = 0; i< length-1; i++) {
+        for (int k =i+1; k< length; k++) {
+            if (array[i] > array[k]) {
+                swap(&array[i], &array[k]);
+            }
+        }
+    }
+
+    for (int i = 0; i< length; i++) {
+        printf("%d\n", array[i]);
+    }
+    
     return 0;
 }
+
