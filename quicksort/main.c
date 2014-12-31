@@ -8,15 +8,26 @@
 
 #include <stdio.h>
 
+void swap(int *, int *);
+void exchangeSort(int, int *);
+void selectionSort(int, int *);
+
+int main(int argc, const char * argv[]) {
+    int array[] = {1,2,3,44,23,9,4,2,3};
+    int length = sizeof(array)/sizeof(int);
+    exchangeSort(length, array);
+    selectionSort(length, array);
+    return 0;
+}
+
 void swap(int *a, int *b) {
     int temp = *a;
     *a = *b;
     *b = temp;
 }
 
-int main(int argc, const char * argv[]) {
-    int array[] = {1,2,3,44,23,9,4,2,3};
-    int length = sizeof(array)/sizeof(int);
+void exchangeSort(int length, int *array){
+    
     for (int i = 0; i< length-1; i++) {
         for (int k =i+1; k< length; k++) {
             if (array[i] > array[k]) {
@@ -24,11 +35,30 @@ int main(int argc, const char * argv[]) {
             }
         }
     }
-
+    
+    printf("Exchange Sort:");
     for (int i = 0; i< length; i++) {
-        printf("%d\n", array[i]);
+        printf("%d,", array[i]);
     }
     
-    return 0;
 }
-
+void selectionSort(int length, int *array){
+    
+    for (int i = 0; i< length-1; i++) {
+        int small = i;
+        for (int k =i+1; k< length; k++) {
+            if (array[i] > array[k]) {
+                small = k;
+            }
+        }
+        if(small !=i){
+            swap(&array[i], &array[small]);
+        }
+    }
+    
+    printf("Selection Sort:");
+    for (int i = 0; i< length; i++) {
+        printf("%d,", array[i]);
+    }
+    
+}
