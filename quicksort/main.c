@@ -13,6 +13,7 @@ void exchangeSort(int, int *);
 void selectionSort(int, int *);
 void insertionSort(int , int *);
 void quickSort(int *, int, int);
+void bubbleSort(int , int *);
 
 int main(int argc, const char * argv[]) {
     int array[] = {10,2,3,44,23,9,4,2,3};
@@ -21,12 +22,17 @@ int main(int argc, const char * argv[]) {
     //selectionSort(length, array);
     //insertionSort(length, array);
     
+    /*
+    //quicksort
     int left = 0;
     int right = 0;
     right = length;
     //printf("%d\n", length);
     //printf("%d\n", right);
     quickSort(array, left, right);
+    */
+    
+    bubbleSort(length, array);
     
     printf("Sort Result:");
     for (int i = 0; i< length; i++) {
@@ -117,4 +123,16 @@ void quickSort(int *array, int left, int right){
         quickSort(array, left, temp-1);
         quickSort(array, temp+1, right);
     }
+}
+
+void bubbleSort(int length, int *array){
+    int i, j, temp;
+    for (i = 0; i < length - 1; i++)
+    for (j = 0; j < length - 1 - i; j++)
+    if (array[j] > array[j + 1]) {
+        temp = array[j];
+        array[j] = array[j + 1];
+        array[j + 1] = temp;
+    }
+    
 }
